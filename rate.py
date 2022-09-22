@@ -1,4 +1,4 @@
-import os
+import os, random
 from PIL import Image
 
 pwd = os.getcwd()
@@ -8,7 +8,9 @@ img_dir = 'assigment-2-images'
 file = open('ratings.txt', 'w', encoding='utf-8')
 user_question = 'On a scale of 1 to 7, how much do you think the person is happy?'
     
-for filename in os.listdir(img_dir):
+filelist = os.listdir(img_dir)
+random.shuffle(filelist)
+for filename in filelist:
     f = os.path.join(pwd, img_dir, filename)
     if os.path.isfile(f):
         img = Image.open(f)
